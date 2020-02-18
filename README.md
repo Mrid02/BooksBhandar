@@ -12,3 +12,7 @@ The site uses html, css and bootstrap, python and flask.
 
 
 ![Screenshot](https://github.com/Mrid02/BooksBhandar/blob/master/Screenshot%20from%202020-02-18%2015-58-03.png)
+
+![Screenshot](https://github.com/Mrid02/BooksBhandar/blob/master/Screenshot%20from%202020-02-18%2016-03-23.png)
+
+![Screenshot](https://github.com/Mrid02/BooksBhandar/blob/master/Screenshot%20from%202020-02-18%2016-04-07.png)
