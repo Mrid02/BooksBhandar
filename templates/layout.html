@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <!-- Latest compiled and minified CSS -->
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+ <!-- jQuery library -->
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+ 
+ <!-- Popper JS -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+ 
+ <!-- Latest compiled JavaScript -->
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script> 
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ <style>
+ .checked {
+   color: orange;
+ }
+ </style>
+
+
+  <title>Books Bhandar</title>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-sm bg-info navbar-dark fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-head">
+        <a class="navbar-brand nav-link" href="{{url_for('index')}}">Books Bhandar</a>
+      </div>
+
+      {% if session.user_id %}
+        <!-- Search bar-->
+      
+        <form class="form-inline" action="{{url_for('index')}}" method="post" >
+          <input class="form-control mr-sm-2 mr-auto" type="text" placeholder="Search" name="text">
+          <button class="btn btn-light" type="submit">Search</button>
+        </form>
+
+        <ul class="nav navbar-nav navbar-right ">
+          <li><a href="#" class="nav-link active"> {{session.get('user_name')}} </a></li>
+          <li><a href="{{url_for('logout')}}" class="btn btn-outline-secondary btn-light ml-2"> Logout </a></li>
+        </ul>
+    
+      {% else %}
+
+        <ul class="nav navbar-nav navbar-right active">
+          <li><a href="{{url_for('register')}} " class="btn btn-outline-secondary btn-light mr-2"> Sign Up</a></li>
+          <li><a href="{{url_for('login')}}" class="btn btn-outline-secondary btn-light"> Login </a></li>
+        </ul>
+    
+
+      {% endif %}
+    </div>
+  </nav>
+  <div class='container pt-5'>
+    {% block body%}{% endblock %}
+
+    </div>
+
+</body>
+
+</html>

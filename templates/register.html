@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<div class="container pt-5 ">
+<div class="row">
+  <div class="col-3"></div>
+  <div class="col-6 border border-info p-4 rounded">
+
+    <h3 class="text-center text-info">Register</h3>
+
+    <form  action="{{url_for('register')}}"  method="post">
+        <div class="form-group">
+          <label for="username">Username:</label>
+          <input type="text" class="form-control" name="username">
+        </div>
+        <div class="form-group">
+          <label for="pwd">Password:</label>
+          <input type="password" class="form-control" name="pwd">
+        </div>
+        <div class="form-group">
+            <label for="pwd">Confirm Password:</label>
+            <input type="password" class="form-control" name="cnfpwd">
+        </div>
+        <button type="submit" class="btn btn-info">Sign Up</button>
+      </form> 
+
+  </div>
+  <div class="col-3"></div>
+</div>
+
+{%if message != ""%}
+
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+      <div class="alert alert-warning alert-dismissible fade show text-centre ">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ message }}
+      </div>
+    </div>
+    <div class="col-3"></div>  
+      </div>
+    </div>
+  
+  {%endif%}
+
+</div>
+
+
+
+
+
+{% endblock %}

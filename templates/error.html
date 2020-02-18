@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+
+{% block body %}
+<div class="container mt-5">
+
+
+<div class="alert alert-danger">
+    <strong>Oops! </strong>{{ message }}
+  </div>
+
+<h3>Return <a href="{{url_for('index')}}">Home</a></h3>
+    <h2></h2>
+</div>
+
+{% endblock %}

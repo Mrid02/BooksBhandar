@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+
+
+{% block body %}
+   <!--<h2>HI welcome to book bhandar </h2>--> 
+{% if request.method =="GET" %}
+
+<div class="container py-5">
+    <div class="card-deck py-2">
+        <div class="card bg-light py-5 px-3">
+          <div class="card-body text-center">
+            <blockquote class="blockquote ">
+                <p>“A room without books is like a body without a soul.”</p>
+                <footer class="blockquote-footer text-right"> Marcus Tullius Cicero </footer>
+                </blockquote>
+          </div>
+        </div>
+      
+        <div class="card bg-light py-5 px-3">
+            <div class="card-body text-center">
+              <blockquote class="blockquote ">
+                  <p>“Good friends, good books, and a sleepy conscience: this is the ideal life.” </p>
+                  <footer class="blockquote-footer text-right"> Mark Twain </footer>
+                  </blockquote>
+            </div>
+          </div>
+
+          <div class="card bg-light py-5 px-3">
+            <div class="card-body text-center">
+              <blockquote class="blockquote ">
+                  <p>“Outside of a dog, a book is man's best friend. Inside of a dog it's too dark to read.” </p>
+                  <footer class="blockquote-footer text-right"> Groucho Marx </footer>
+                  </blockquote>
+            </div>
+          </div>
+
+          <div class="card bg-light py-5 px-3">
+            <div class="card-body text-center">
+              <blockquote class="blockquote ">
+                  <p>“If you only read the books that everyone else is reading, you can only think what everyone else is thinking.”</p>
+                  <footer class="blockquote-footer text-right">Haruki Murakami </footer>
+                  </blockquote>
+            </div>
+          </div>
+    
+      </div>
+    </div>
+    {% endif %}
+
+
+   <div class="container py-5">
+
+    <ul class="list-group">
+        {% for x in data %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <h5 class='text-primary'><a href="/book/{{x.isbn}}">{{x.title}}</a></h5>
+            by {{x.author}} in {{x.year}}
+            </a>
+          <span class="badge badge-primary badge-pill">
+              <h6 class='float-right'>isbn: {{x.isbn}}</h6></span>
+        </li>
+        {% endfor %}
+     </ul>
+
+   </div>
+
+  
+
+
+{% endblock %}

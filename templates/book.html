@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<div class="container bg-light pb-2">
+
+    <br>
+<div class='container bg-light row p-2 '>
+    <h1 class='container bg-info text-white text-center my-2'>{{book.title}}</h1>
+    <div class='col-8'>
+        Author:<h2> {{book.author}}</h2>
+        Year:<h2> {{book.year}}</h2>
+        Isbn:<h2> {{book.isbn}}</h2>
+    </div>
+    <div class='col-4 text-center bg-warning my-2 border rounded'>
+        <h2 >goodreads.com rating: </h2>
+        <h1>{{average_rating}}</h1>
+        <h5 class=''>Ratings received: </h5>
+        <h3>{{work_ratings_count}}</h3>
+    </div>
+</div>
+
+
+
+
+
+<div class="container  bg-light my-2">
+
+    {% if reviews != None %}
+    <h3 class='container bg-info text-white text-left my-2 border rounded'>Community Reviews</h3>
+
+    {% for x in reviews %}
+    <div class='container bg-white my-3 border rounded border-secondary'>
+        <h6>Rating: {{x.rating}} of 5</h6>
+        {%for i in range(x.rating)%}
+            <span class="fa fa-star checked"></span>
+        {%endfor %}
+        {%for i in range(5-(x.rating))%}
+        <span class="fa fa-star"></span>
+        {%endfor%}
+        <blockquote class="blockquote text-right">
+        <p>{{x.review}}</p>
+        <footer class="blockquote-footer">{{x.username}}</footer>
+        </blockquote>
+    </div>
+{% endfor %}
+
+{% endif %}
+
+{%if message != ""%}
+<div class="alert alert-warning alert-dismissible fade show">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    {{message}}
+</div>
+  {%endif%} 
+  
+<div class="pb-3">
+  
+
+    <h4>Write your review of {{book.title}}</h4>
+<form  action="{{url_for('bookpage',isbn=book.isbn)}}"  method="post">
+
+    <div class="form-group">
+        <label for="sel1">Select Rating:</label>
+        <select class="form-control" id="sel1" name="stars">
+          <option>5</option>
+          <option>4</option>
+          <option>3</option>
+          <option>2</option>
+          <option>1</option>
+        </select>
+    </div> 
+    
+    <div class="form-group">
+        <label for="comment">Review:</label>
+        <textarea class="form-control" rows="5" id="comment" name="textarea"></textarea>
+    </div> 
+    
+    <button type="submit" class="btn btn-info">Submit</button>
+
+</form>
+
+</div>
+
+
+</div>
+<!--
+<div class='bg-light text-center '><a href='/api/{{book.isbn}}'>API</a></div>
+-->
+</div>
+
+{% endblock %}
+
+
+
